@@ -3,6 +3,8 @@ from src.calculadora import Calculadora
 
 
 class TestCalculadora(unittest.TestCase):
+    # Verifica se a aplicação permanece consistente mesmo após
+    # diversas operações
     def test_operacoes_sequenciais(self):
         calc = Calculadora()
         
@@ -22,6 +24,8 @@ class TestCalculadora(unittest.TestCase):
         # Verifica se o histórico tem 3 registros
         self.assertEqual(len(calc.historico), 3)
 
+    # Verifica se as operações matemáticas estão sincronizadas 
+    # com o histórico
     def test_integracao_historico_resultado(self):
         calc = Calculadora()
         
@@ -39,6 +43,8 @@ class TestCalculadora(unittest.TestCase):
         self.assertIn("2 ^ 3 = 8", calc.historico)
         self.assertIn("8 + 2 = 10", calc.historico)
 
+    # Verifica se o historico permance consistente mesmo após
+    # erro seguido de operação
     def test_integracao_erro_consistencia(self):
         calc = Calculadora()
         calc.somar(2, 2)  # 4

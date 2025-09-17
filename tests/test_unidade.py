@@ -2,6 +2,8 @@ import unittest
 from src.calculadora import Calculadora
 
 class TestCalculadora(unittest.TestCase):
+    # Verifica se a saída da operação de soma 
+    # está de acordo com a entrada
     def test_entrada_saida_soma(self):
         calc = Calculadora()
         resultado = calc.somar(5, 3)
@@ -9,6 +11,8 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(calc.obter_ultimo_resultado(), 8)
         print("Teste de soma OK")
     
+    # Verifica se a saída da operação de subtracao 
+    # está de acordo com a entrada
     def test_entrada_saida_subtracao(self):
         calc = Calculadora()
         resultado = calc.subtrair(5, 3)
@@ -16,6 +20,8 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(calc.obter_ultimo_resultado(), 2)
         print("Teste de subtrair OK")
     
+    # Verifica se a saída da operação de multiplicacao 
+    # está de acordo com a entrada
     def test_entrada_saida_multiplicacao(self):
         calc = Calculadora()
         resultado = calc.multiplicar(5, 3)
@@ -23,6 +29,8 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(calc.obter_ultimo_resultado(), 15)
         print("Teste de multiplicacao OK")
 
+    # Verifica se a saída da operação de divisao 
+    # está de acordo com a entrada
     def test_entrada_saida_divisao(self):
         calc = Calculadora()
         resultado = calc.dividir(15, 3)
@@ -30,6 +38,7 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(calc.obter_ultimo_resultado(), 5)
         print("Teste de divisao OK")
     
+    # Verifica se as operações fazem tratamento de erros de tipagem
     def test_tipagem_invalida(self):
         calc = Calculadora()
         # Somar com tipo inválido
@@ -62,6 +71,8 @@ class TestCalculadora(unittest.TestCase):
         with self.assertRaises(TypeError):
             calc.potencia(2, "3")
 
+    # Verifica se o historico permanece consistente mesmo após
+    # várias operações seguidas
     def test_consistencia_historico(self):
         calc = Calculadora()
         calc.somar(2, 3)
@@ -83,11 +94,13 @@ class TestCalculadora(unittest.TestCase):
 
         print("OK")
 
+    # Verifica se a estrutura inicial das operações está correta
     def test_inicializacao(self):
         calc = Calculadora()
         self.assertEqual(calc.resultado, 0)       # Deve iniciar com resultado 0
         self.assertEqual(len(calc.historico), 0)  # O histórico deve começar vazio
 
+    # Verifica se o historico está consistente com as operações
     def test_modificacao_historico(self):
         calc = Calculadora()
         calc.somar(1, 1)
@@ -110,6 +123,7 @@ class TestCalculadora(unittest.TestCase):
         calc.limpar_historico()
         self.assertEqual(len(calc.historico), 0)
 
+    # Verifica se as operações aceitam valores extremamente baixos
     def test_limite_inferior(self):
         calc = Calculadora()
         
@@ -125,6 +139,7 @@ class TestCalculadora(unittest.TestCase):
         resultado = calc.subtrair(0, 5)
         self.assertEqual(resultado, -5)
 
+    # Verifica se as operações aceitam valores extremamente altos
     def test_limite_superior(self):
         calc = Calculadora()
         
@@ -141,6 +156,7 @@ class TestCalculadora(unittest.TestCase):
         resultado = calc.subtrair(1e10, 1e10)
         self.assertEqual(resultado, 0)
 
+    # Verifica se há tratamento de erros de divisão por zero
     def test_divisao_por_zero(self):
         calc = Calculadora()
         
@@ -148,6 +164,8 @@ class TestCalculadora(unittest.TestCase):
         with self.assertRaises(ValueError):
             calc.dividir(10, 0)
 
+    # Verifica se a aplicação segue funcionando corretamente
+    # mesmo após erros
     def test_fluxos_divisao(self):
         calc = Calculadora()
         
@@ -159,6 +177,7 @@ class TestCalculadora(unittest.TestCase):
         with self.assertRaises(ValueError):
             calc.dividir(10, 0)
 
+    # Verifica se as operações retornam mensagens de erro
     def test_mensagens_erro(self):
         calc = Calculadora()
         
@@ -168,6 +187,8 @@ class TestCalculadora(unittest.TestCase):
         
         self.assertEqual(str(contexto.exception), "Divisao por zero nao permitida")
 
+    # Verifica se a aplicação suporta diversas operações de
+    # limpar historico mesmo vazio
     def test_limpar_historico_idempotente(self):
         calc = Calculadora()
         calc.somar(1, 2)
