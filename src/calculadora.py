@@ -54,13 +54,4 @@ class Calculadora:
         return self.resultado
 
 
-
-if __name__ == "__main__":
-    print("Resultados dos testes: ")
-    unittest.main()
-    # testes_unitarios.test_entrada_saida_soma()
-    # testes_unitarios.test_entrada_saida_subtracao()
-    # testes_unitarios.test_entrada_saida_multiplicacao()
-    # testes_unitarios.test_entrada_saida_divisao()
-    # testes_unitarios
     

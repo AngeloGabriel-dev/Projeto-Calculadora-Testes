@@ -39,6 +39,12 @@ class TestCalculadora(unittest.TestCase):
         self.assertIn("2 ^ 3 = 8", calc.historico)
         self.assertIn("8 + 2 = 10", calc.historico)
 
-
+    def test_integracao_erro_consistencia(self):
+        calc = Calculadora()
+        calc.somar(2, 2)  # 4
+        with self.assertRaises(ValueError):
+            calc.dividir(5, 0)  # erro
+        self.assertEqual(calc.obter_ultimo_resultado(), 4)
+        self.assertEqual(len(calc.historico), 1)
 
 

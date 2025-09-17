@@ -168,4 +168,13 @@ class TestCalculadora(unittest.TestCase):
         
         self.assertEqual(str(contexto.exception), "Divisao por zero nao permitida")
 
+    def test_limpar_historico_idempotente(self):
+        calc = Calculadora()
+        calc.somar(1, 2)
+        calc.limpar_historico()
+        calc.limpar_historico()
+        calc.limpar_historico()
+        calc.limpar_historico()
+        self.assertEqual(len(calc.historico), 0)
+
 
