@@ -25,5 +25,8 @@ test_mensagens_erro (test_unidade.TestCalculadora.test_mensagens_erro) ... ok <b
 test_modificacao_historico (test_unidade.TestCalculadora.test_modificacao_historico) ... ok <br>
 test_tipagem_invalida (test_unidade.TestCalculadora.test_tipagem_invalida) ... ok <br>
 
+### Cobertura do código
+Houve 100% de cobertura de todos os testes como mostra a análise realizada pelo coverage:
+
 
 
