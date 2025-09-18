@@ -27,6 +27,6 @@ test_tipagem_invalida (test_unidade.TestCalculadora.test_tipagem_invalida) ... o
 
 ### Cobertura do código
 Houve 100% de cobertura de todos os testes como mostra a análise realizada pelo coverage:
-
+![alt](url)
 
 
